@@ -1,15 +1,13 @@
 version: '3.8'
-
 services:
   web:
     image: trafex/php-nginx:latest
     container_name: web
     ports:
-      - "1000:8080"
+            - "1000:8080"
     volumes:
-      - /srv/website:/var/www/html
+            - ./website:/var/www/html
     restart: always
-
   website_db:
     image: mariadb:10.11
     container_name: website_db
@@ -17,15 +15,5 @@ services:
       MARIADB_ROOT_PASSWORD: "123"
       MARIADB_DATABASE: "websitedb"
     volumes:
-      - /srv/webdb:/var/lib/mysql
-    restart: always
-
-  website_php:
-    image: phpmyadmin:latest
-    container_name: website_php
-    ports:
-      - "1002:80"
-    environment:
-      PMA_HOST: website_db
-      MYSQL_ROOT_PASSWORD: "123"
+            - ./srv/webdb:/var/lib/mysql
     restart: always
