@@ -1,0 +1,9 @@
+services:
+  web:
+    build: .
+    container_name: web
+    ports:
+      - "1000:80"
+    volumes:
+      - ./:/var/www/html
+    restart: always
